@@ -1,0 +1,32 @@
+use name_db; - to start work with data base
+
+select * from table; - to choose all fields in table
+
+select name_field_1, name_field_2 from table
+    where name_field_1>same value AND name_field IN (value_1, value_2)  - to select particular fields
+
+update name_table SET mane_field = 'new_value'; - to update the entry (запись) in table
+example
+update billing set currency='USD'
+    where payer_email='alex@mail.com'
+    and recipient_email='leo@mail.com'
+    and sum>=997.00;
+
+insert into name_table values (
+ [value for atributes]
+)   - to append new entry in table
+
+example
+insert into billing (payer_email, recipient_email, sum,
+    currency, billing_date)
+values(
+'ivan@mail.ru',
+'leo@mail.ru',
+'123.00', 'USD',
+'2016-08-20');
+
+DELETE FROM table WHERE edit_user=''   - to delete strings from tables
+example
+delete  from billing
+    where payer_email = '' or payer_email is null
+    or recipient_email = '' or recipient_email is null
