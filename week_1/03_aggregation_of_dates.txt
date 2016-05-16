@@ -1,0 +1,23 @@
+Агрегация или агрегирование (лат. aggregatio «присоединение») — процесс объединения
+элементов в одну систему. Испольуем для отчетов.
+
+select count(1) from project;  - to count number of strings
+
+select avg(name_column) from project;  - to count average value in column
+
+example counts dif between two values
+select project_finish, project_start,
+    datediff(project_finish, project_start)
+from project where project_finish is not null
+
+example counts average, max, min, group by, order by, limit
+select
+    avg(datediff(project_finish, project_start)) as avg_days,
+    max(datediff(project_finish, project_start)) as max_days,
+    min(datediff(project_finish, project_start)) as min_days,
+    client_name
+from project where project_finish > project_start
+group by client_name
+order by max_days desc
+limit 10;
+
